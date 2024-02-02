@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, InputLabel, Select, MenuItem, Button, Box } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, } from '@mui/material';
 import { CATEGORIAS } from '../constants';
 import useNoticias from '../hooks/useNoticias';
 
@@ -16,21 +16,12 @@ const Formulario = () => {
                     onChange={handleChangeCategoria}
                     value={categoria}
                 >
-                    {CATEGORIAS.map((cat) => (
+                    {CATEGORIAS.map(cat => (
                         <MenuItem key={cat.value} value={cat.value}>
                             {cat.label}
                         </MenuItem>
                     ))}
                 </Select>
-                <Box sx={{marginTop: 2}}>
-                    <Button
-                        fullWidth
-                        variant='contained'
-                        color='primary'
-                    >
-                        Buscar noticia
-                    </Button>
-                </Box>
             </FormControl>
         </form>
     );
