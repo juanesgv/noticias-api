@@ -1,11 +1,13 @@
 import React from 'react'
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Pagination, Stack } from '@mui/material';
 import useNoticias from '../hooks/useNoticias';
 import Noticia from './Noticia';
 
 const ListadoNoticias = () => {
 
-    const { noticias } = useNoticias()
+    const { noticias, totalNoticias, handleChangePagina, pagina } = useNoticias()
+    const totalPaginas = Math.ceil(totalNoticias / 20) //redondea hacia arriba
+
     return (
         <>
             <Typography
@@ -27,6 +29,23 @@ const ListadoNoticias = () => {
                     />
                 ))}
             </Grid>
+            <Stack
+                spacing={2}
+                direction={'row'}
+                justifyContent={'center'}
+                alignItems={'center'}
+                sx={{
+                    marginTop: 5,
+                    marginBottom: 5
+                }}
+            >
+                <Pagination
+                    count={totalPaginas}
+                    color='primary'
+                    onChange={handleChangePagina}
+                    page={pagina}
+                />
+            </Stack>
         </>
     )
 }
